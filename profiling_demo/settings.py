@@ -38,10 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'silk',
     'todo'
 ]
 
 MIDDLEWARE = [
+    'silk.middleware.SilkyMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -134,3 +136,4 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',  # Enables UI
     ]
 }
+SILKY_PYTHON_PROFILER=True
