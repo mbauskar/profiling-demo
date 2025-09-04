@@ -13,6 +13,13 @@ class TodoViewSet(viewsets.ModelViewSet):
     queryset = Todo.objects.all()
     serializer_class = TodoSerializer
 
+    @silk_profile(name='Todo List Profiling')
+    def list(self, request, *args, **kwargs):
+        # Artificial slowness for profiling demo
+        _ = list(Todo.objects.all())
+        time.sleep(0.1)
+        return super().list(request, *args, **kwargs)
+
     @silk_profile(name='Todo Create Profiling')
     def create(self, request, *args, **kwargs):
         # Intentional ORM slowness: query all todos (unnecessary) & sleep
